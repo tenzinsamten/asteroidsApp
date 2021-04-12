@@ -7,3 +7,10 @@ Use the updated Gradle version in the `~/gradle/wrapper/gradle-wrapper.propertie
 ```
 distributionUrl = https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
 ```
+
+Add Nasa API Key to run the application in Constants file
+```
+const val API_KEY = "{Your API key}"
+distributionUrl = https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+```
+
