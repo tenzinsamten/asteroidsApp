@@ -2,7 +2,7 @@ package com.udacity.asteroidradar.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.udacity.asteroidradar.Constants
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.api.Network
 import com.udacity.asteroidradar.api.NetworkAsteroidJson
 import com.udacity.asteroidradar.api.asDomainModel
@@ -26,7 +26,7 @@ class AsteroidsRepository(private val databaseDao: AsteroidDao) {
             val startDate = GeneralHelper().getCurrentDateInString()
             val endDate = GeneralHelper().getEndDateInString()
             val networkAsteroidString =
-                Network.nasaApi.getNearByAsteroids(startDate, endDate, Constants.API_KEY).await()
+                Network.nasaApi.getNearByAsteroids(startDate, endDate, BuildConfig.NASA_API_KEY).await()
             val jsonObject = JSONObject(networkAsteroidString)
             val asteroidList = parseAsteroidsJsonResult(jsonObject)
             val networkAsteroidJson = NetworkAsteroidJson(asteroidList.size, asteroidList)

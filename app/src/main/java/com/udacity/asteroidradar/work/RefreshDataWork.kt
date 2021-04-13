@@ -3,8 +3,8 @@ package com.udacity.asteroidradar.work
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.Constants.SYNC_DATE
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidsRepository
 import com.udacity.asteroidradar.repository.ImageRepository
@@ -27,7 +27,7 @@ class RefreshDataWork(appContext: Context, params: WorkerParameters) :
             val sharePref =
                 applicationContext.getSharedPreferences(Constants.APP_NAME, Context.MODE_PRIVATE)
             asteroidsRepository.getAsteroids()
-            imageRepository.getPhotoOfTheDay(sharePref,startDate)
+            imageRepository.getPhotoOfTheDay(sharePref,startDate,BuildConfig.NASA_API_KEY)
             Result.success()
         } catch (exception: HttpException) {
             Result.retry()

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.Constants
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidsRepository
@@ -26,7 +27,7 @@ class MainViewModel(
             val lastSyncDate = sharePref.getString(Constants.SYNC_DATE,null)
             if(lastSyncDate == null || lastSyncDate != startDate){
                 asteroidsRepository.getAsteroids()
-                imageRepository.getPhotoOfTheDay(sharePref,startDate)
+                imageRepository.getPhotoOfTheDay(sharePref,startDate,BuildConfig.NASA_API_KEY)
             }
         }
     }
